@@ -53,7 +53,7 @@ interface CharacterManagement{
 	
 	Character selectCharacter();
 	
-	//Character findCharacter(String characterName);
+	Character findCharacter(int choice);
 }
 
 //INTERFACE FOR BATTLE

@@ -62,10 +62,16 @@ public class Stats{
 	}
 	
 	public int getWins() {
+		if(wins < 0) {
+			throw new IllegalArgumentException("Number of wins cannot be negative");
+		}
 		return wins;
 	}
 	
 	public int getLoses() {
+		if(loses < 0) {
+			throw new IllegalArgumentException("Number of loses cannot be negative");
+		}
 		return loses;
 	}
 	

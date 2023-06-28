@@ -1,2 +1,2 @@
 Mercenary Winrate: 50.00%
-Magician Winrate: 72.00%
+Magician Winrate: 67.86%

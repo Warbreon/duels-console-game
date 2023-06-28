@@ -31,4 +31,16 @@ public abstract class Character {
 	public boolean isAlive() {
 		return HP > 0;
 	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+	
+	public int getHP() {
+		return HP;
+	}
 }

@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -100,24 +101,22 @@ public class Game implements GameInterface{
 	}
 	
 	//FIND CHARACTER IN characterList to perform selectCharacter()
-	
-	/*
 	@Override
-	public Character findCharacter(String characterName) {
-	    for (Character character : characterList) {
-	        if (character.getName().equals(characterName)) {
-	            return character;
-	        }
+	public Character findCharacter(int choice) {
+	    if(choice >= 0 && choice < characterList.size()) {
+	    	return characterList.get(choice);
 	    }
-	    return null;
+	    else {
+	    	return null;
+	    }
 	}
-	*/
+	
 	
 	//SELECT YOUR CLASS
 	public Character selectCharacter() {
 		System.out.println("Select your character:");
 		for(int i = 0; i < characterList.size(); i++) {
-			System.out.println((i+1) + ". " + characterList.get(i).name);
+			System.out.println((i+1) + ". " + characterList.get(i).getName());
 		}
 		
 		System.out.print("Your choice: ");
@@ -129,7 +128,7 @@ public class Game implements GameInterface{
 				choice = sc.nextInt() - 1;
 			}
 			
-			Character playerCharacter = characterList.get(choice);
+			Character playerCharacter = findCharacter(choice);
 			return playerCharacter;
 		
 	}
@@ -223,7 +222,7 @@ public class Game implements GameInterface{
 	}
 	
 	//ACCORDING TO EARLIER SELECTED CHARACTER, CONSOLE ASKS A PLAYER TO CHOSE A NUMBER OF A GUN TYPE
-	private int getPlayerAttackChoice(Character character) { 
+	private int getPlayerAttackChoice(Character character) {
 		System.out.println("Select your attack:");
 		
 		character.printAttackOptions();
@@ -325,8 +324,21 @@ public class Game implements GameInterface{
 		
 		characterStatsMap.values().stream()
 					.filter(stats -> stats.getWinRate() >= 50.0)
+					.sorted(Comparator.comparing(Stats::getWinRate).reversed()
+							.thenComparing(Stats::getWins))
 					.forEach(stats -> rez.println(stats.getCharacterName() + " Winrate: " + String.format("%.2f", stats.getWinRate()) + "%"));
 		
 		rez.close();
 	}
+	
+	//SEARCH character pagal ivestus parametrus
+	public List<Character> searchCharacters(String name, int level, int HP){
+		return characterList.stream()
+				.filter(character -> character.getName().equals(name))
+				.filter(character -> character.getLevel() == level)
+				.filter(character -> character.getHP() == HP)
+				.collect(Collectors.toList());
+	}
 }
+
+	

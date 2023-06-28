@@ -1,3 +1,3 @@
-Magician Wins: 18 Loses: 7 Winrate: 72.00%
-Mercenary Wins: 10 Loses: 10 Winrate: 50.00%
-Hunter Wins: 6 Loses: 17 Winrate: 26.09%
+Magician Wins: 19 Loses: 9 Winrate: 67.86%
+Mercenary Wins: 11 Loses: 11 Winrate: 50.00%
+Hunter Wins: 7 Loses: 17 Winrate: 29.17%
